@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+#./Allrun.pre
+
+#runApplication decomposePar -cellDist
+runApplication blockMesh
+runApplication topoSet
+cp -r 0.orig 0
+runApplication setFields
+#runApplication $(getApplication)
+runApplication decomposePar
+runParallel $(getApplication)
+
+runApplication reconstructPar
+
+#------------------------------------------------------------------------------

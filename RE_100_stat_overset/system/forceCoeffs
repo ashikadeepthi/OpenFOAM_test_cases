@@ -1,0 +1,32 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+
+forceCoeffs
+{
+    type        forceCoeffs;
+    libs        ("libforces.so");
+    patches     ("cylinderWall");
+         // <-- Use your cylinder patch name
+    rho         rhoInf;
+    rhoInf      1.225;               // Air density (kg/m³), adjust as needed
+    liftDir     (0 1 0);             // Y-direction for lift
+    dragDir     (1 0 0);             // X-direction for drag
+    pitchAxis   (0 0 1);             // Z-axis for moment
+    magUInf     1;             // Freestream velocity (adjust as needed)
+    lRef        1;                   // Reference length (cylinder diameter)
+    Aref        0.1;                   // Reference area (diameter × span for 2D)
+    CofR        (0 0 0);             // Center of rotation
+    writeControl timeStep;
+    writeInterval 1;
+    log false;
+}
+
+
+
+// ************************************************************************* //

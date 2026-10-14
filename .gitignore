@@ -1,0 +1,17 @@
+# Temporary editor and backup files
+*.swp
+*.save
+*~
+
+# OpenFOAM post-processing
+**/postProcessing/
+
+# Parallel decomposition
+**/processor*/
+**/processors*/
+
+# Saved simulation time directories
+RE_100_stat_overset/[1-9]*/
+RE_100_stat_overset/0.*
+RE_185_coarse_0.8_oscillating_cyl/[1-9]*/
+RE_185_coarse_0.8_oscillating_cyl/0.*

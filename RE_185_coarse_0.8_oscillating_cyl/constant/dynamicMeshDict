@@ -1,0 +1,68 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/*dynamicFvMesh   dynamicOversetFvMesh;
+
+motionSolverLibs (fvMotionSolvers);
+
+solver          displacementLaplacian;
+
+displacementLaplacianCoeffs
+{
+    diffusivity     uniform 1;
+}*/
+
+
+
+dynamicFvMesh       dynamicOversetFvMesh;
+
+solver          multiSolidBodyMotionSolver;
+
+multiSolidBodyMotionSolverCoeffs
+{
+    movingZone
+    {
+        /*solidBodyMotionFunction rotatingMotion;
+        rotatingMotionCoeffs
+        {
+            origin      (0 0 0);
+            axis        (0 0 1);
+            omega       2;
+        }
+       
+        
+        solidBodyMotionFunction oscillatingRotatingMotion;
+
+        oscillatingRotatingMotionCoeffs
+        {
+            origin      (0 0 0);        // Center of rotation
+            axis        (0 0 1);        // Rotation axis (Z-direction)
+            amplitude   (0 0 1.59);         // Maximum angle in radians (e.g., 30° = π/6 ≈ 0.5236)
+            omega       0.4;              // Angular frequency in rad/s
+        } */
+        
+         solidBodyMotionFunction oscillatingLinearMotion;
+        oscillatingLinearMotionCoeffs
+        {
+            amplitude       (0 0.2 0);   // Oscillates in Y with 0.5m amplitude
+            omega           1.766;          // Angular frequency in rad/s
+            direction       (0 1 0);    // Direction of motion: Y-axis
+        }
+    }
+}
+
+
+// ************************************************************************* //
